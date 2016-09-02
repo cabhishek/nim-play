@@ -1,18 +1,14 @@
+#An untyped parameter means that symbol lookups and type resolution is not performed
+#before the expression is passed to the template
 template `mul` (a, b: untyped): untyped =
   a * b
+echo mul(2.3, 3)
 
-template declareInt(x, y: untyped) =
-  var x, y: int
+template printX = echo x
 
-declareInt(a, b) # create var
-(a, b) = (5, 3)
+proc print[T](a: openArray[T]) =
+  for x in a: printX #echo x is substituted here
 
-echo mul(a, b)
+print(@[1,2,3,4])
+print(@["a","b","c","d"])
 
-template htmlTag(tag: expr) {.immediate.} =
-  proc tag(): string = "<" & astToStr(tag) & ">"
-
-htmlTag(br)
-htmlTag(html)
-
-echo html(), br()
