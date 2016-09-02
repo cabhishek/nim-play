@@ -1,16 +1,16 @@
-type 
-    Person = ref object of RootObj
-        name* : string
-        age   : int
+type
+  Person = ref object of RootObj
+    name* : string
+    age   : int
 
-    Student = ref object of Person
-        id : int
+  Student = ref object of Person
+    id : int
 var
-    student : Student
-    person : Person
+  student : Student
+  person : Person
 
 proc getID(x: Person): int =
-    Student(x).id
+  Student(x).id
 
 assert(student of Student)
 student = Student(name: "Slim shady", age: 41, id:2)
@@ -18,18 +18,18 @@ student = Student(name: "Slim shady", age: 41, id:2)
 echo student[]
 echo student.getID()
 
-person = Person(name:"a", age: 2)
+person = Person(name:"a", age: 2) #Create a Person object
 echo(person.name)
 
 type
-    Socket* = ref object of RootObj
-        host: int
+  Socket* = ref object of RootObj
+    host: int
 
 proc `host=`*(s: var Socket, value: int) {.inline.} =
-    s.host = value # setter
+  s.host = value # setter
 
 proc host*(s: Socket): int {.inline.} =
-    s.host # getter
+  s.host # getter
 
 var s:Socket
 new(s)

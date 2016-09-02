@@ -1,5 +1,5 @@
 template `mul` (a, b: untyped): untyped =
-    a * b
+  a * b
 
 template declareInt(x, y: untyped) =
   var x, y: int
