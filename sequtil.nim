@@ -31,3 +31,10 @@ assert zipped[0].a == 1 and zipped[0].b == "one"
 # Alternately
 let (a, b) = zipped[0]
 assert a == 1 and b == "one"
+
+echo foldl(numbers, a+b)
+
+numbers.keepItIf(it > 5)
+echo numbers
+
+echo deduplicate(@[1,2,3,3])
