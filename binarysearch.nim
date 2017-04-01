@@ -13,5 +13,4 @@ proc search(a: openArray[int], element: int): bool =
 
   return false
 
-let input = @[2,3,4,5,6,7,8]
-echo(search(input, 5))
+echo(search(@[2,3,4,5,6,7,8], 5))

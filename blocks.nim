@@ -20,7 +20,6 @@ block outer:
 
   echo name & city & $age
 
-
 block:
   echo "block"
 
