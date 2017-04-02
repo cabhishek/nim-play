@@ -44,9 +44,27 @@ var
 table["one"] = 1
 table["two"] = 2
 
-echo table
+echo table.hasKey("one")
 
 #openArray
 proc openArraySize(oa: openArray[int]): int =
   oa.len
 assert openArraySize(@[1,2,3,4]) == 4
+
+#string
+var
+  str1 = newString(1)
+  #or
+  str2: string = "nim lang."
+str1 = "nim lang."
+echo str1[0..^1] #len-1
+echo str2[0..^1]
+
+#rangetype
+type
+  Subrange = range[0..5]
+var
+  sub: Subrange = 2
+echo sub
+#var
+  #sub2: Subrange = 6 #compiler error

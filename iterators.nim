@@ -1,3 +1,4 @@
+import sequtils
 # basic
 iterator chars(a: string): char =
   var i = 0
@@ -12,7 +13,7 @@ iterator flatten[T](coll: seq[seq[T]]): T =
     for item in subcoll:
       yield item
 
-for x in flatten(@[@[1,2,3], @[4,5,6]]): echo x
+echo toSeq(flatten(@[@[1,2,3], @[4,5,6]]))
 
 # operator overload
 iterator `->`(fr, to: int): int =

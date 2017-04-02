@@ -10,8 +10,9 @@ block outer:
       break outer
 
 block outer:
-  const name = "Slim Shady"
-  const city = "New York"
+  const
+    name = "Slim Shady"
+    city = "New York"
   var age = 41
   block inner:
     const name = "Luke Cage"
