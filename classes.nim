@@ -31,6 +31,18 @@ assert(myAnotherObject of MyAnotherClass)
 # Simple heterogenous composition of data in Nim
 type
   MyTuple = tuple[name: string, age: int]
-
 var
   person: MyTuple = (name: "SlimShady", age: 41)
+
+#Automatic self insertions
+type
+  Fields = object of RootObj
+    x: int
+    y: int
+var
+  fields = Fields(x: 10, y: 20)
+
+{.this: self.}
+proc sum(self: Fields): int = x + y
+echo "->" & $fields.sum()
+

@@ -68,3 +68,17 @@ var
 echo sub
 #var
   #sub2: Subrange = 6 #compiler error
+
+# distinct
+type
+  Dollar = distinct int
+  Euro = distinct int
+var
+  d: Dollar
+  e: Euro
+#echo d + 12
+# Error: cannot add a number with no unit and a ``Dollar``
+
+# auto
+proc returnInt(x, y: int): auto = x + y
+echo returnInt(2, 3)
