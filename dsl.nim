@@ -1,4 +1,4 @@
-import strutils
+import strutils, macros, parseUtils
 
 template html(name: expr, matter: stmt) {.immediate.} =
   proc name(): string =
