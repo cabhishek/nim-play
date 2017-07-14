@@ -1,6 +1,6 @@
 import strutils, sequtils, tables
 
-#Object
+# object
 type
   Person = object
     name : string
@@ -12,7 +12,7 @@ proc info(a: Person) =
 let person1 = Person(name:"Luke Cage", age:31)
 person1.info()
 
-#tuple
+# tuple
 type
   Address = tuple[street: string, city: string, zip: int]
 var
@@ -23,14 +23,14 @@ proc `$`(address: Address): string =
 
 echo $address
 
-#set
+# set
 type
   Charset = set[char]
 var
   x: Charset = {'a'..'z', '1'..'9'}
 echo 'a' in x and '1' in x
 
-#varargs
+# varargs
 proc join(args: varargs[string]): string =
   var seq = newSeq[string]()
   for arg in items(args): seq.add(arg)
@@ -38,7 +38,7 @@ proc join(args: varargs[string]): string =
 
 echo join("a", "b", "c")
 
-#tables
+# tables
 var
   table = newTable[string, int]()
 table["one"] = 1
@@ -46,12 +46,12 @@ table["two"] = 2
 
 echo table.hasKey("one")
 
-#openArray
+# openArray
 proc openArraySize(oa: openArray[int]): int =
   oa.len
 assert openArraySize(@[1,2,3,4]) == 4
 
-#string
+# string
 var
   str1 = newString(1)
   #or
@@ -60,7 +60,7 @@ str1 = "nim lang."
 echo str1[0..^1] #len-1
 echo str2[0..^1]
 
-#rangetype
+# rangetype
 type
   Subrange = range[0..5]
 var
@@ -103,4 +103,11 @@ f2.value += 1
 assert f2.value != s2.value
 
 
+# proc type
+proc print(x: int) = echo x
+
+proc forEachItem(action: proc(x: int)) =
+  for item in [1, 2, 3, 4, 5, 6]:
+    action(item)
+forEachItem(print)
 
