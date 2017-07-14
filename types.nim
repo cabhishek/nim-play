@@ -82,3 +82,25 @@ var
 # auto
 proc returnInt(x, y: int): auto = x + y
 echo returnInt(2, 3)
+
+# ref vs value types
+type
+  Counter = object
+    value: int
+
+let
+  f: ref Counter = new(Counter)
+  s = f # ref copy
+
+f.value += 1 # f is pointing to the object on heap whose values are mutable. But f itself is immutable
+assert f.value == s.value
+
+var # needs to be var for mutation
+  f2 = Counter(value: 0)
+  s2 = f2 # value copy
+
+f2.value += 1
+assert f2.value != s2.value
+
+
+
