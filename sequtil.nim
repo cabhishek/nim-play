@@ -1,4 +1,4 @@
-import sequtils
+import sequtils, future
 # simple stuff from sequtils package
 
 var numbers = @[1,2,3,4]
@@ -9,6 +9,8 @@ echo numbers
 
 # Returns a new sequence
 echo map(numbers, proc(x: int): int = x*2)
+# `=>` syntax
+echo map(numbers, x => x*2)
 # or use mapit
 echo mapit(numbers, it*2)
 
@@ -17,6 +19,7 @@ let
 
 echo filter(colors, proc(color: string): bool = color in ["foo", "black"])  # ["black"]
 # Alternately use
+echo filter(colors, x => x in ["foo", "black"])
 echo filterit(colors, it in ["foo", "black"]) # ["black"]
 
 proc greaterThan (threshold: int): proc(x: int): bool =

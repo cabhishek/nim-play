@@ -1,4 +1,4 @@
-proc binarySearch(a: openArray[int], element: int): bool =
+proc search(a: openArray[int], element: int): bool =
   # type inferred
   var
     low = 0
@@ -15,4 +15,4 @@ proc binarySearch(a: openArray[int], element: int): bool =
 
   return false
 
-echo binarySearch(@[2,3,4,5,6,7,8], 5)
+echo search(@[2,3,4,5,6,7,8], 5) # true
