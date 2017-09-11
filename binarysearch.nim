@@ -1,9 +1,11 @@
-proc search(a: openArray[int], element: int): bool =
-  var low = 0
-  var high = len(a) - 1
+proc binarySearch(a: openArray[int], element: int): bool =
+  # type inferred
+  var
+    low = 0
+    high = len(a) - 1
 
   while low <= high:
-    let mid = (low + high) div 2
+    let mid: int = (low + high) div 2 # computes the integer division
     if element < a[mid]:
       high = mid - 1
     elif element > a[mid]:
@@ -13,4 +15,4 @@ proc search(a: openArray[int], element: int): bool =
 
   return false
 
-echo(search(@[2,3,4,5,6,7,8], 5))
+echo binarySearch(@[2,3,4,5,6,7,8], 5)
