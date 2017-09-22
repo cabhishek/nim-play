@@ -1,6 +1,6 @@
-import os, strutils, json, asyncdispatch, httpclient
+import os, strutils, asyncdispatch, httpclient
 
-const BASE_URL = "http://jsonplaceholder.typicode.com"
+const baseUrl = "http://jsonplaceholder.typicode.com"
 
 proc doRequest(url: string): Future[string] =
   echo "Fetching contents from $1" % url
@@ -9,7 +9,7 @@ proc doRequest(url: string): Future[string] =
 proc main() {.async.} =
   var requests: seq[Future[string]] = @[]
   for resource in @["posts", "comments", "albums"]:
-    requests.add(doRequest(BASE_URL / resource))
+    requests.add(doRequest(baseUrl / resource))
 
   echo await all(requests)
 

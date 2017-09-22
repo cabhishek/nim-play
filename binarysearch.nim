@@ -1,14 +1,14 @@
-proc search(a: openArray[int], element: int): bool =
+proc search(a: openArray[int], key: int): bool =
   # type inferred
   var
     low = 0
     high = len(a) - 1
 
   while low <= high:
-    let mid: int = (low + high) div 2 # computes the integer division
-    if element < a[mid]:
+    let mid: int = (low + high) div 2 # integer division
+    if key < a[mid]:
       high = mid - 1
-    elif element > a[mid]:
+    elif key > a[mid]:
       low = mid + 1
     else:
       return true
