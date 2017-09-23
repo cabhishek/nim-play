@@ -4,7 +4,7 @@ import sequtils, future
 var numbers = @[1,2,3,4]
 
 #Mutate numbers
-map(numbers, proc(x: var int) = x *= 2)
+apply(numbers, proc(x: var int) = x *= 2)
 echo numbers
 
 # Returns a new sequence
@@ -41,3 +41,15 @@ numbers.keepItIf(it > 5)
 echo numbers
 
 echo deduplicate(@[1,2,3,3])
+
+# multi line lambdas
+echo map(toSeq(0..10), x => (var y = x*2; y+2))
+
+const mapper =
+  proc(x: int): int =
+    let y = x * 2
+    y + 2
+
+echo map(toSeq(0..10), mapper)
+
+

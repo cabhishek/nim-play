@@ -1,4 +1,4 @@
-import strutils
+import strutils, sequtils, future
 
 proc multipleReturn(): tuple[name: string, age: int] =
   result = ("foo", 10)
