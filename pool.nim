@@ -1,12 +1,17 @@
-import threadpool
+import threadpool, locks
 
-const msg = "hello, world"
+var lock: Lock
+initLock(lock)
 
-proc display(param: string) =
-  for i in 0..<10:
-    echo $i, param
+var counter {.guard: lock.} = 0
 
-spawn display(msg)
-spawn display(msg)
+proc increment(x: int) = 
+  for i in 0.. <x:
+    withLock lock:
+      inc(counter)
+
+spawn increment(10_000)
+spawn increment(10_000)
 
 sync()
+echo counter # 20000

@@ -13,7 +13,7 @@ proc worker(interval: int) {.thread.} =
       echo "> Got msg: " & data.msg
       echo "> Doing work"
       acquire(lock)
-      counter += 1 #shared data
+      counter += 1 #shared data, actual work is to increment
       release(lock)
       sleep(interval) # long running work
       echo "> Done with work"
@@ -37,4 +37,4 @@ when isMainModule:
 
   joinThreads(threads) # wait for completion
 
-  echo "Counter value: " & $counter
+  echo "Counter value: " & $counter #5
