@@ -7,3 +7,5 @@
 nimcache/
 bin
 temp.nim
+.vscode/
+

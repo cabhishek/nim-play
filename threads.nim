@@ -8,7 +8,7 @@ var
 
 proc worker(interval: int) {.thread.} =
   while true:
-    var data = channel.tryRecv()
+    let data = channel.tryRecv()
     if data.dataAvailable:
       echo "> Got msg: " & data.msg
       echo "> Doing work"

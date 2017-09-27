@@ -1,6 +1,6 @@
 import threadpool
 
-var msg = "hello, world"
+const msg = "hello, world"
 
 proc display(param: string) =
   for i in 0..<10:
