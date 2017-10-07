@@ -1,3 +1,4 @@
+# basic OOP 
 type
   Parent = ref object of RootObj
       name: string
