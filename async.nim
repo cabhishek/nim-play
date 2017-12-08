@@ -1,10 +1,12 @@
-import os, strutils, asyncdispatch, httpclient
+import os, strutils, asyncdispatch, httpclient, times
 
 const baseUrl = "http://jsonplaceholder.typicode.com"
 
-proc doRequest(url: string): Future[string] =
-  echo "Fetching contents from $1" % url
-  result = newAsyncHttpClient().getContent(url)
+proc doRequest(url: string): Future[string] {.async.} =
+  echo "Fetching: $1" % url
+  var t = epochTime()
+  result = await newAsyncHttpClient().getContent(url)
+  echo "Took: $1s" % $(epochTime() - t)
 
 proc main() {.async.} =
   var requests: seq[Future[string]] = @[]
