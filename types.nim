@@ -102,7 +102,6 @@ var # needs to be var for mutation
 f2.value += 1
 assert f2.value != s2.value
 
-
 # proc type
 proc print(x: int) = echo x
 
@@ -111,3 +110,8 @@ proc forEachItem(action: proc(x: int)) =
     action(item)
 forEachItem(print)
 
+# untyped vs typed
+template declare(varName: untyped, value: typed) = 
+    var varName = value
+declare(msg, "Hello") # msg is untyped "Hello" is string type
+echo msg # Hello
