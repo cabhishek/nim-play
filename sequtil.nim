@@ -52,4 +52,5 @@ const mapper =
 
 echo map(toSeq(0..10), mapper)
 
-
+# do notation
+echo map(toSeq(0..10)) do(x: int) -> int: x * 2
