@@ -1,2 +1,2 @@
 import times
-getTime()
+echo getTime()
